@@ -1,0 +1,5 @@
+10:38:17 [main] ERROR com.revature.ui.MainMenu - Registration exception was thrown: java.lang.Exception
+13:56:21 [main] ERROR com.revature.ui.Home - Could not create new item.
+14:39:51 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "cookie"
+14:40:24 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "2.00"
+14:40:58 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "2"
