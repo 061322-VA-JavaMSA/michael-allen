@@ -3,3 +3,8 @@
 14:39:51 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "cookie"
 14:40:24 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "2.00"
 14:40:58 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "2"
+08:54:06 [main] ERROR com.revature.ui.MainMenu - Login exception was thrown: com.revature.exceptions.LoginException
+08:55:07 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "blue"
+08:55:45 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "blue"
+08:55:49 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "black"
+10:53:09 [main] ERROR com.revature.ui.AddItemMenu - Could not create new item.

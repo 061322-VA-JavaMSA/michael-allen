@@ -32,6 +32,27 @@ public class ItemPostgres implements ItemDAO {
 		
 		return i;
 	}
+	
+	@Override
+	public String retrieveItemName(int id) {
+		String sql = "SELECT name FROM items WHERE id = ?;";
+		String itemName = null;
+		
+		try(Connection c = ConnectionUtil.getConnection()){
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			itemName = rs.getString("name");
+
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return itemName;
+	}
 
 	@Override
 	public List<Item> retrieveItems() {
@@ -59,11 +80,51 @@ public class ItemPostgres implements ItemDAO {
 		
 		return items;
 	}
+	
+	@Override
+	public List<Integer> retrieveItemIds() {
+		String sql = "SELECT id FROM items;";
+		List<Integer> ids = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnection()) {
+			
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				ids.add(rs.getInt("id"));
+			}
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ids;
+	}
 
 	@Override
-	public boolean deleteItemById(Item i) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteItemById(int id) {
+		String sql = "DELETE FROM items WHERE id = ?;";
+		int rowsChanged = 0;
+
+		try(Connection c = ConnectionUtil.getConnection()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			rowsChanged = ps.executeUpdate();
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(rowsChanged == 0) {
+			return false;
+		}
+		return true;
 	}
+
+
 
 }

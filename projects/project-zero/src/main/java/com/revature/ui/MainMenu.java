@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.exceptions.LoginException;
 import com.revature.models.User;
 import com.revature.services.AuthService;
 import com.revature.services.RegisterService;
@@ -65,15 +64,14 @@ public class MainMenu {
 		try {
 			User u = as.login(username, password);
 			if(u.getRole().equals("Employee")) {
-				Home h = new Home(u.getUsername());
-				h.employeeHome();
+				HomeMenu.employeeHome();
 			}
 			else {
-				Home.CustomerHome(u.getUsername());
+				HomeMenu.CustomerHome(u.getUsername());
 			}
-		} catch (LoginException e) {
+		} catch (Exception e) {
 			System.out.println("Invalid credentials. Please try again.");
-			log.error("Login exception was thrown: " + e.fillInStackTrace());
+			log.error("Exception was thrown: " + e.fillInStackTrace());
 			login();
 		}
 	}

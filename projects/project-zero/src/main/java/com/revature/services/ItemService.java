@@ -14,7 +14,19 @@ public class ItemService {
 		return idao.retrieveItems();
 	}
 	
+	public String getItemName(int id) {
+		return idao.retrieveItemName(id);
+	}
+	
 	public void createItem(Item i) throws Exception {
 		idao.createItem(i);
+	}
+	
+	public List<Integer> getIds() {
+		return idao.retrieveItemIds();
+	}
+	
+	public boolean deleteItemById(int id) {
+		return idao.deleteItemById(id);
 	}
 }

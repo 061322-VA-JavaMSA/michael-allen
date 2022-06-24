@@ -6,6 +6,8 @@ import com.revature.models.Item;
 
 public interface ItemDAO {
 	Item createItem(Item i);
+	String retrieveItemName(int id);
 	List<Item> retrieveItems();
-	boolean deleteItemById(Item i);
+	List<Integer> retrieveItemIds();
+	boolean deleteItemById(int id);
 }
