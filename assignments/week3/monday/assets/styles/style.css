@@ -75,3 +75,9 @@ footer {
     font-family: headerFont, sans-serif;
     font-size: 20px;
 }
+
+@media screen and (max-width: 900px) {
+    body {
+        background-size: 900px;
+    }
+}
