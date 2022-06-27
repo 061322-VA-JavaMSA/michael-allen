@@ -1,0 +1,77 @@
+@font-face {
+    font-family: headerFont;
+    src: url("../fonts/Righteous-Regular.ttf");
+}
+@font-face {
+    font-family: mainFont;
+    src: url(../fonts/Swansea-q3pd.ttf);
+}
+@font-face {
+    font-family: mainFont-bold;
+    src: url("../fonts/SwanseaBold-D0ox.ttf");
+}
+
+body {
+    background-image: url("../images/dubai-1767540_1920.jpg");
+    background-size: cover;
+    color: white;
+    margin: 0;
+}
+
+header {text-align: center; font-family: headerFont, sans-serif;}
+
+h1{
+    background-color: #8798faad;
+    color: black;
+    margin: 0;
+    padding: 10px 0px;
+    font-size: 60px;
+    letter-spacing: 5px;
+}
+
+nav {
+    padding: 10px 0px;
+    background-color: rgba(252, 192, 125, 0.692);
+}
+
+.nav-link {display: inline;}
+
+ul {list-style-type: none;margin: 0;padding: 0;}
+
+a {
+    color: white;
+    text-align: center;
+    padding: 10px 40px;
+    font-size: 20px;
+}
+
+a:hover {background-color: white;color: black;}
+
+section {
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.568);
+    color: black;
+    font-family: mainFont, sans-serif;
+}
+
+#intro {
+    font-size: 50px;
+    text-align: center;
+    font-family: mainFont-bold, sans-serif;
+}
+
+#about-me, #ttaal {font-size: 25px;}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #8798faad;
+    text-align: center;
+    color: black;
+    padding: 10px;
+    font-family: headerFont, sans-serif;
+    font-size: 20px;
+}
