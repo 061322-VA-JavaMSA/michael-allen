@@ -14,6 +14,14 @@ public class ItemService {
 		return idao.retrieveItems();
 	}
 	
+	public List<Item> getAvailableItems() {
+		return idao.retrieveAvailableItems();
+	}
+	
+	public List<String> getOwnedItems(String user) {
+		return idao.retrieveOwnedItems(user);
+	}
+	
 	public String getItemName(int id) {
 		return idao.retrieveItemName(id);
 	}
@@ -24,6 +32,10 @@ public class ItemService {
 	
 	public List<Integer> getIds() {
 		return idao.retrieveItemIds();
+	}
+	
+	public void updateOwnedStatus(int id) {
+		idao.updateOwnedStatus(id);
 	}
 	
 	public boolean deleteItemById(int id) {

@@ -18,7 +18,7 @@ public class ViewOffersMenu {
 		List<Offer> offers = os.getUserOffers(username);
 		
 		if(offers.isEmpty()) {
-			System.out.println("No offers to view.");
+			noCustOffers(username);
 		}
 		else {
 			System.out.println("**************************************************************************");
@@ -66,7 +66,7 @@ public class ViewOffersMenu {
 		List<Offer> offers = os.getPendingOffers();
 		
 		if(offers.isEmpty()) {
-			noOffers(username);
+			noPendingOffers(username);
 		}
 		else {
 			System.out.println("**************************************************************************");
@@ -78,9 +78,9 @@ public class ViewOffersMenu {
 				System.out.println(offers.get(i).getId() + "      " + offers.get(i).getCustomer() +
 						"      " + offers.get(i).getItem() + "       " + offers.get(i).getStatus());
 			}
+			
+			System.out.println("**************************************************************************");
 		}
-		
-		System.out.println("**************************************************************************");
 		
 		do {
 			System.out.println("Choose an option:");
@@ -115,8 +115,8 @@ public class ViewOffersMenu {
 		} while(validOption == false);
 	}
 	
-	public static void noOffers(String username) {
-		System.out.println("No open offers.");
+	public static void noPendingOffers(String username) {
+		System.out.println("No offers to view.");
 		
 		do {
 			System.out.println("Type \"back\" to return home or \"logout\" to log out.");
@@ -126,6 +126,30 @@ public class ViewOffersMenu {
 			switch(option) {
 				case "back":
 					HomeMenu.employeeHome(username);
+					validAnswerToNA = true;
+					break;
+				case "logout":
+					LoginRegMenu.splashMenu();
+					validAnswerToNA = true;
+					break;
+				default:
+					System.out.println("Not a valid option.");
+					validAnswerToNA = false;
+			}
+		} while(validAnswerToNA == false);
+	}
+	
+	public static void noCustOffers(String username) {
+		System.out.println("No offers to view.");
+		
+		do {
+			System.out.println("Type \"back\" to return home or \"logout\" to log out.");
+			String option = scan.nextLine();
+			System.out.println();
+			
+			switch(option) {
+				case "back":
+					HomeMenu.customerHome(username);
 					validAnswerToNA = true;
 					break;
 				case "logout":

@@ -7,6 +7,7 @@ public class Item {
 	private int id;
 	private String name;
 	private double price;
+	private String ownedStatus;
 	
 	public Item() {
 		super();
@@ -36,9 +37,17 @@ public class Item {
 		this.price = price;
 	}
 
+	public String getOwnedStatus() {
+		return ownedStatus;
+	}
+
+	public void setOwnedStatus(String ownedStatus) {
+		this.ownedStatus = ownedStatus;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, price);
+		return Objects.hash(id, name, ownedStatus, price);
 	}
 
 	@Override
@@ -50,13 +59,15 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		return id == other.id && Objects.equals(name, other.name)
+		return id == other.id && Objects.equals(name, other.name) && Objects.equals(ownedStatus, other.ownedStatus)
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
 	}
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", price=" + price + "]";
+		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", ownedStatus=" + ownedStatus + "]";
 	}
+
+
 
 }

@@ -67,6 +67,7 @@ public class AddItemMenu {
 		Item newItem = new Item();
 		newItem.setName(itemName);
 		newItem.setPrice(itemPrice);
+		newItem.setOwnedStatus("Available");
 		
 		try {
 			is.createItem(newItem);

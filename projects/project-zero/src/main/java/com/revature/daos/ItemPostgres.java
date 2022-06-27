@@ -16,13 +16,14 @@ public class ItemPostgres implements ItemDAO {
 
 	@Override
 	public Item createItem(Item i) {
-		String sql = "INSERT INTO items (name, price) VALUES (?,?);";
+		String sql = "INSERT INTO items (name, price, owned_status) VALUES (?,?,?);";
 		
 		try(Connection c = ConnectionUtil.getConnection()){
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, i.getName());
-			ps.setDouble(2, i.getPrice());	
+			ps.setDouble(2, i.getPrice());
+			ps.setString(3, i.getOwnedStatus());
 			ps.executeUpdate();
 
 		} catch (SQLException | IOException e) {
@@ -83,6 +84,55 @@ public class ItemPostgres implements ItemDAO {
 		return items;
 	}
 	
+	public List<Item> retrieveAvailableItems() {
+		String sql = "SELECT * FROM items WHERE owned_status = 'Available';";
+		List<Item> items = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnection()) {
+			
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				Item i = new Item();
+				i.setId(rs.getInt("id"));
+				i.setName(rs.getString("name"));
+				i.setPrice(rs.getDouble("price"));
+				
+				items.add(i);
+			}
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return items;
+	}
+	
+	@Override
+	public List<String> retrieveOwnedItems(String user) {
+		String sql = "SELECT * FROM offers WHERE customer = '" + user + "' AND status = 'Accepted';";
+		List<String> items = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnection()) {
+			
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				String name = rs.getString("item");
+				items.add(name);
+			}
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return items;
+	}
+	
 	@Override
 	public List<Integer> retrieveItemIds() {
 		String sql = "SELECT id FROM items;";
@@ -104,6 +154,23 @@ public class ItemPostgres implements ItemDAO {
 		
 		return ids;
 	}
+	
+	@Override
+	public void updateOwnedStatus(int id) {
+		String sql = "UPDATE items SET owned_status = 'Owned' WHERE id = ?";
+		
+		try(Connection c = ConnectionUtil.getConnection()){
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, id);	
+			ps.executeUpdate();
+
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
 	public boolean deleteItemById(int id) {
@@ -124,5 +191,6 @@ public class ItemPostgres implements ItemDAO {
 		if(rowsChanged == 0) {return false;}
 		else {return true;}
 	}
+
 
 }

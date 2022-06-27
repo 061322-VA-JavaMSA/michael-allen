@@ -19,7 +19,8 @@ public class HomeMenu {
 		
 	}
 	
-	public static void showMenu(String username) {
+	public static void employeeHome(String username) {
+		
 		System.out.println("Welcome, " + username + "!\n");
 		
 		System.out.println("**************************************************************************");
@@ -42,11 +43,6 @@ public class HomeMenu {
 		}
 		
 		System.out.println("**************************************************************************");
-	}
-	
-	public static void employeeHome(String username) {
-		
-		showMenu(username);
 		
 		do {
 			System.out.println("Choose an option:");
@@ -66,7 +62,6 @@ public class HomeMenu {
 					validOption = true;
 					break;
 				case "3":
-					System.out.println();
 					LoginRegMenu.splashMenu();
 					validOption = true;
 					break;
@@ -102,7 +97,6 @@ public class HomeMenu {
 					validEditOption = true;
 					break;
 				case "4":
-					System.out.println();
 					LoginRegMenu.splashMenu();
 					validEditOption = true;
 					break;
@@ -119,13 +113,35 @@ public class HomeMenu {
 	
 	public static void customerHome(String username) {
 		
-		showMenu(username);
+		System.out.println("Welcome, " + username + "!\n");
+		
+		System.out.println("**************************************************************************");
+		
+		List<Item> items = is.getAvailableItems();
+		
+		if(items.isEmpty()) {
+			System.out.println("No items available.");
+		}
+		else {
+			System.out.println("ID   |   Item Name  |  Price");
+			System.out.println();
+					
+			for(int i = 0; i < items.size(); i++) {
+				Double price = items.get(i).getPrice();
+				String priceDollarAmnt = NumberFormat.getCurrencyInstance(Locale.US).format(price);
+				
+				System.out.println(items.get(i).getId() + "      " + items.get(i).getName() + "       " + priceDollarAmnt);
+			}
+		}
+		
+		System.out.println("**************************************************************************");
 		
 		do {
 			System.out.println("Choose an option:");
 			System.out.println("1: Make offer");
-			System.out.println("2: View your offers");
-			System.out.println("3: Log out");
+			System.out.println("2: View status of offers");
+			System.out.println("3: View your owned items");
+			System.out.println("4: Log out");
 			String option = scan.nextLine();
 			System.out.println();
 			
@@ -139,7 +155,10 @@ public class HomeMenu {
 					validOption = true;
 					break;
 				case "3":
-					System.out.println();
+					OwnedItemsMenu.viewItems(username);
+					validOption = true;
+					break;
+				case "4":
 					LoginRegMenu.splashMenu();
 					validOption = true;
 					break;

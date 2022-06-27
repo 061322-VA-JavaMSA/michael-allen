@@ -208,6 +208,8 @@ public class OfferPostgres implements OfferDAO {
 			e.printStackTrace();
 		}
 		
+		is.updateOwnedStatus(itemId);
+		
 		if(rowsChanged == 0) {return false;}
 		else {return true;}
 		
