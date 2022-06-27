@@ -19,13 +19,10 @@ public class HomeMenu {
 		
 	}
 	
-	public HomeMenu(String username) {
+	public static void showMenu(String username) {
 		System.out.println("Welcome, " + username + "!\n");
-	}
-	
-	public static void employeeHome() {
 		
-		System.out.println("*******************************");
+		System.out.println("**************************************************************************");
 		
 		List<Item> items = is.getItems();
 		
@@ -44,7 +41,12 @@ public class HomeMenu {
 			}
 		}
 		
-		System.out.println("*******************************");
+		System.out.println("**************************************************************************");
+	}
+	
+	public static void employeeHome(String username) {
+		
+		showMenu(username);
 		
 		do {
 			System.out.println("Choose an option:");
@@ -56,16 +58,16 @@ public class HomeMenu {
 			
 			switch(option) {
 				case "1":
-					editList();
+					editList(username);
 					validOption = true;
 					break;
 				case "2":
-					//View open offers
+					ViewOffersMenu.empPendingOffers(username);
 					validOption = true;
 					break;
 				case "3":
 					System.out.println();
-					MainMenu.mainMenu();
+					LoginRegMenu.splashMenu();
 					validOption = true;
 					break;
 				default:
@@ -75,7 +77,7 @@ public class HomeMenu {
 		} while(validOption == false);
 	}
 	
-	public static void editList() {
+	public static void editList(String username) {
 		
 		do {
 			System.out.println("Choose an option:");
@@ -88,20 +90,20 @@ public class HomeMenu {
 			
 			switch(option) {
 				case "1":
-					AddItemMenu.addItem();
+					AddItemMenu.addItem(username);
 					validEditOption = true;
 					break;
 				case "2":
-					RemoveItemMenu.removeItem();
+					RemoveItemMenu.removeItem(username);
 					validEditOption = true;
 					break;
 				case "3":
-					employeeHome();
+					employeeHome(username);
 					validEditOption = true;
 					break;
 				case "4":
 					System.out.println();
-					MainMenu.mainMenu();
+					LoginRegMenu.splashMenu();
 					validEditOption = true;
 					break;
 				default:
@@ -115,28 +117,9 @@ public class HomeMenu {
 		// Implementation to view pending offers
 	}
 	
-	public static void CustomerHome(String username) {
+	public static void customerHome(String username) {
 		
-		System.out.println("*******************************");
-		
-		List<Item> items = is.getItems();
-		
-		if(items.isEmpty()) {
-			System.out.println("No items available.");
-		}
-		else {
-			System.out.println("ID   |   Item Name  |  Price");
-			System.out.println();
-					
-			for(int i = 0; i < items.size(); i++) {
-				Double price = items.get(i).getPrice();
-				String priceDollarAmnt = NumberFormat.getCurrencyInstance(Locale.US).format(price);
-				
-				System.out.println(items.get(i).getId() + "      " + items.get(i).getName() + "       " + priceDollarAmnt);
-			}
-		}
-		
-		System.out.println("*******************************");
+		showMenu(username);
 		
 		do {
 			System.out.println("Choose an option:");
@@ -152,12 +135,12 @@ public class HomeMenu {
 					validOption = true;
 					break;
 				case "2":
-					//View customer offers
+					ViewOffersMenu.custListOffers(username);
 					validOption = true;
 					break;
 				case "3":
 					System.out.println();
-					MainMenu.mainMenu();
+					LoginRegMenu.splashMenu();
 					validOption = true;
 					break;
 				default:

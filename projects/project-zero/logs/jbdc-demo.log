@@ -8,3 +8,14 @@
 08:55:45 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "blue"
 08:55:49 [main] ERROR com.revature.ui.Home - java.text.ParseException: Unparseable number: "black"
 10:53:09 [main] ERROR com.revature.ui.AddItemMenu - Could not create new item.
+13:31:05 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.Exception
+13:31:14 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+13:32:26 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+13:36:32 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+13:37:37 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+13:38:39 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+13:41:21 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+14:07:52 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+14:11:23 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+14:13:35 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
+17:15:10 [main] ERROR com.revature.ui.LoginRegMenu - Exception was thrown: java.lang.Exception

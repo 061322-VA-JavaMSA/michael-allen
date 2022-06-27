@@ -44,7 +44,9 @@ public class ItemPostgres implements ItemDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
-			itemName = rs.getString("name");
+			while (rs.next()) {
+				itemName = rs.getString("name");
+			}
 
 		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
@@ -119,12 +121,8 @@ public class ItemPostgres implements ItemDAO {
 			e.printStackTrace();
 		}
 		
-		if(rowsChanged == 0) {
-			return false;
-		}
-		return true;
+		if(rowsChanged == 0) {return false;}
+		else {return true;}
 	}
-
-
 
 }

@@ -9,15 +9,15 @@ import com.revature.models.User;
 import com.revature.services.AuthService;
 import com.revature.services.RegisterService;
 
-public class MainMenu {
+public class LoginRegMenu {
 	
 	private static Scanner scan;
 	private static AuthService as;
 	private static RegisterService rs;
 	private static boolean validOption;
-	private static Logger log = LogManager.getLogger(MainMenu.class);
+	private static Logger log = LogManager.getLogger(LoginRegMenu.class);
 	
-	public static void mainMenu() {
+	public static void splashMenu() {
 		
 		scan = new Scanner(System.in);
 		validOption = true;
@@ -39,7 +39,7 @@ public class MainMenu {
 					break;
 				default:
 					System.out.println("Not a valid option.\n");
-					mainMenu();
+					splashMenu();
 					validOption = false;
 			}
 		} while(validOption == false);
@@ -50,24 +50,24 @@ public class MainMenu {
 		String username;
 		String password;
 		
-		System.out.println("\nType \"back\" to return to the main menu.");
+		System.out.println("\nAt any point, type \"back\" to return to the main menu.");
 		
 		System.out.println("Please enter your username:");
 		username = scan.nextLine();
-		if(username.equals("back")) { mainMenu(); }
+		if(username.equals("back")) { splashMenu(); }
 		
 		System.out.println("Please enter your password:");
 		password = scan.nextLine();
 		System.out.println();
-		if(password.equals("back")) { mainMenu(); }
+		if(password.equals("back")) { splashMenu(); }
 		
 		try {
 			User u = as.login(username, password);
 			if(u.getRole().equals("Employee")) {
-				HomeMenu.employeeHome();
+				HomeMenu.employeeHome(u.getUsername());
 			}
 			else {
-				HomeMenu.CustomerHome(u.getUsername());
+				HomeMenu.customerHome(u.getUsername());
 			}
 		} catch (Exception e) {
 			System.out.println("Invalid credentials. Please try again.");
@@ -85,15 +85,15 @@ public class MainMenu {
 		rs = new RegisterService();
 		
 		
-		System.out.println("Type \"back\" to return to the main menu.");
+		System.out.println("At any point, type \"back\" to return to the main menu.");
 		
 		System.out.println("\nPlease enter a username:");
 		username = scan.nextLine();
-		if(username.equals("back")) { mainMenu(); }
+		if(username.equals("back")) { splashMenu(); }
 		
 		System.out.println("Please enter a password:");
 		password = scan.nextLine();
-		if(password.equals("back")) { mainMenu(); }
+		if(password.equals("back")) { splashMenu(); }
 		
 		do {
 		System.out.println("How will you be using the app?");
@@ -111,7 +111,7 @@ public class MainMenu {
 				validOption = true;
 				break;
 			case "back":
-				mainMenu();
+				splashMenu();
 				validOption = true;
 				break;
 			default:
@@ -128,7 +128,7 @@ public class MainMenu {
 		try {
 			rs.createUser(userToReg);
 			System.out.println("\nYou have successfully registered! You can now log in.");
-			mainMenu();
+			splashMenu();
 		} catch (Exception e) {
 			System.out.println("\nA user with that username already exists. Please try again.");
 			log.error("Registration exception was thrown: " + e.fillInStackTrace());

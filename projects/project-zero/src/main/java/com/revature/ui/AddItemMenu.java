@@ -20,15 +20,15 @@ public class AddItemMenu {
 	private static ItemService is = new ItemService();
 	private static boolean validAnswerToRemoveQuestion = true;
 
-	public static void addItem() {
+	public static void addItem(String username) {
 		System.out.println("At any point, type \"back\" to return to the main menu");
-		System.out.println("or type \"logout\" to return to log out.");
+		System.out.println("or type \"logout\" to log out.");
 		
 		System.out.println("Enter the name of the item:");
 		String itemName = scan.nextLine();
 		System.out.println();
-		if(itemName.equals("back")) { HomeMenu.employeeHome(); }
-		else if(itemName.equals("logout")) { MainMenu.mainMenu(); }
+		if(itemName.equals("back")) { HomeMenu.employeeHome(username); }
+		else if(itemName.equals("logout")) { LoginRegMenu.splashMenu(); }
 		
 	
 		do {
@@ -36,8 +36,8 @@ public class AddItemMenu {
 			String inputPrice = scan.nextLine();
 			System.out.println();
 
-			if(inputPrice.equals("back")) { HomeMenu.employeeHome(); }
-			else if(inputPrice.equals("logout")) { MainMenu.mainMenu(); }
+			if(inputPrice.equals("back")) { HomeMenu.employeeHome(username); }
+			else if(inputPrice.equals("logout")) { LoginRegMenu.splashMenu(); }
 			else {
 			
 				if(inputPrice.charAt(0) != '$') {
@@ -87,15 +87,15 @@ public class AddItemMenu {
 			switch(removeAgain) {
 				case "1":
 					validAnswerToRemoveQuestion = true;
-					addItem();
+					addItem(username);
 					break;
 				case "2":
 					validAnswerToRemoveQuestion = true;
-					HomeMenu.employeeHome();
+					HomeMenu.employeeHome(username);
 					break;
 				case "3":
 					validAnswerToRemoveQuestion = true;
-					MainMenu.mainMenu();
+					LoginRegMenu.splashMenu();
 					break;
 				default:
 					System.out.println("Not a valid option.\n");

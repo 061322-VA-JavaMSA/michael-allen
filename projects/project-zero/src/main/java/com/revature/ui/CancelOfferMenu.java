@@ -8,35 +8,35 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.services.ItemService;
+import com.revature.services.OfferService;
 
-public class RemoveItemMenu {
+public class CancelOfferMenu {
 	
 	private static Scanner scan = new Scanner(System.in);
-	private static Logger log = LogManager.getLogger(RemoveItemMenu.class);
-	private static ItemService is = new ItemService();
+	private static Logger log = LogManager.getLogger(CancelOfferMenu.class);
+	private static OfferService os = new OfferService();
 	private static boolean validAnswerToNA = true;
 	private static boolean validIdToRemove = true;
 	private static boolean validAnswerToRemoveQuestion = true;
 	private static Integer itemId = null;
 	private static int indexOfId;
-	private static List<Integer> ids = is.getIds();
-
-	public static void removeItem(String username) {
+	private static List<Integer> ids = os.getIds();
+	
+	public static void cancelOffer(String username) {
 		
 		if(ids.isEmpty()) {
-			noItems(username);
+			noOffers(username);
 		}
 		
 		System.out.println("At any point, type \"back\" to return to the main menu");
 		System.out.println("or type \"logout\" to log out.");
 		
 		do {
-			System.out.println("Enter the ID of the item you'd like to remove:");
+			System.out.println("Enter the ID of the offer you'd like to cancel:");
 			String itemIdinput = scan.nextLine();
 			System.out.println();
 					
-			if(itemIdinput.equals("back")) { HomeMenu.employeeHome(username); }
+			if(itemIdinput.equals("back")) { HomeMenu.customerHome(username); }
 			else if(itemIdinput.equals("logout")) { LoginRegMenu.splashMenu(); }
 			else /*1*/ {
 				
@@ -56,13 +56,13 @@ public class RemoveItemMenu {
 						validIdToRemove = true;
 						indexOfId = ids.indexOf(itemId);
 						
-						if(is.deleteItemById(itemId)) {
-							System.out.println("Item successfully removed from shop!");
+						if(os.cancelOffer(itemId)) {
+							System.out.println("Offer successfully canceled.");
 							ids.remove(indexOfId);
 						}
 					} //End if(ids.contains(itemId))
 					else /*3*/ {
-						System.out.println("Item doesn't exist.");
+						System.out.println("Offer doesn't exist.");
 						validIdToRemove = false;
 					}
 				} //End if(inputToNum != null)
@@ -74,11 +74,11 @@ public class RemoveItemMenu {
 		} while (validIdToRemove == false);
 				
 		if(ids.isEmpty()) {
-			noItems(username);
+			noOffers(username);
 		}
 		else {
 			do {
-				System.out.println("Would you like to remove another item?");
+				System.out.println("Would you like to cancel another offer?");
 				System.out.println("1: Yes");
 				System.out.println("2: No");
 				System.out.println("3: Logout");
@@ -88,11 +88,11 @@ public class RemoveItemMenu {
 				switch(removeAgain) {
 					case "1":
 						validAnswerToRemoveQuestion = true;
-						removeItem(username);
+						cancelOffer(username);
 						break;
 					case "2":
 						validAnswerToRemoveQuestion = true;
-						HomeMenu.employeeHome(username);
+						HomeMenu.customerHome(username);
 						break;
 					case "3":
 						validAnswerToRemoveQuestion = true;
@@ -106,8 +106,8 @@ public class RemoveItemMenu {
 		} //End else
 	} //Ends removeItem() method
 	
-	public static void noItems(String username) {
-		System.out.println("No items available.");
+	public static void noOffers(String username) {
+		System.out.println("No offers to view.");
 		
 		do {
 			System.out.println("Type \"back\" to return home or \"logout\" to log out.");
@@ -116,7 +116,7 @@ public class RemoveItemMenu {
 			
 			switch(option) {
 				case "back":
-					HomeMenu.employeeHome(username);
+					HomeMenu.customerHome(username);
 					validAnswerToNA = true;
 					break;
 				case "logout":
@@ -129,4 +129,5 @@ public class RemoveItemMenu {
 			}
 		} while(validAnswerToNA == false);
 	}
-} //Ends RemoveItemMenu class
+	
+}
