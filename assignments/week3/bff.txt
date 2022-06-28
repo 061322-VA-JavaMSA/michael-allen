@@ -1,0 +1,3 @@
+Lane is in Arkansas,
+Daniel is in Alabama,
+Derek is working on his JUnit testing
