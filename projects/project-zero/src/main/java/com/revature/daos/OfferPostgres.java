@@ -51,6 +51,7 @@ public class OfferPostgres implements OfferDAO {
 				o.setId(rs.getInt("id"));
 				o.setCustomer(rs.getString("customer"));
 				o.setItem(rs.getString("item"));
+				o.setItem_id(rs.getInt("item_id"));
 				o.setStatus(rs.getString("status"));
 				
 				offers.add(o);
@@ -145,6 +146,7 @@ public class OfferPostgres implements OfferDAO {
 				o.setId(rs.getInt("id"));
 				o.setCustomer(rs.getString("customer"));
 				o.setItem(rs.getString("item"));
+				o.setItem_id(rs.getInt("item_id"));
 				o.setStatus(rs.getString("status"));
 				
 				offers.add(o);

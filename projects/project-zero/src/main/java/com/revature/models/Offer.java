@@ -12,6 +12,21 @@ public class Offer {
 	public Offer() {
 		super();
 	}
+	
+	public Offer(int id, String customer, String item, int item_id, String status) {
+		this.id = id;
+		this.customer = customer;
+		this.item = item;
+		this.item_id = item_id;
+		this.status = status;
+	}
+	
+	public Offer(String customer, String item, int item_id, String status) {
+		this.customer = customer;
+		this.item = item;
+		this.item_id = item_id;
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;

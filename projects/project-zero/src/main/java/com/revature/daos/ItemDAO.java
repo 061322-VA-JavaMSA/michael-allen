@@ -11,6 +11,6 @@ public interface ItemDAO {
 	List<Item> retrieveAvailableItems();
 	List<String> retrieveOwnedItems(String user);
 	List<Integer> retrieveItemIds();
-	void updateOwnedStatus(int id);
+	boolean updateOwnedStatus(int id);
 	boolean deleteItemById(int id);
 }

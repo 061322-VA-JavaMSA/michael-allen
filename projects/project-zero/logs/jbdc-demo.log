@@ -19,3 +19,4 @@
 14:11:23 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
 14:13:35 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
 17:15:10 [main] ERROR com.revature.ui.LoginRegMenu - Exception was thrown: java.lang.Exception
+08:00:40 [main] ERROR com.revature.ui.LoginRegMenu - Exception was thrown: java.lang.Exception: Invalid credentials. Please try again.

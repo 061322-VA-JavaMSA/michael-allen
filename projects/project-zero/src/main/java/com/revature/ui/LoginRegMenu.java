@@ -70,7 +70,7 @@ public class LoginRegMenu {
 				HomeMenu.customerHome(u.getUsername());
 			}
 		} catch (Exception e) {
-			System.out.println("Invalid credentials. Please try again.");
+			System.out.println(e);
 			log.error("Exception was thrown: " + e.fillInStackTrace());
 			login();
 		}
@@ -130,7 +130,7 @@ public class LoginRegMenu {
 			System.out.println("\nYou have successfully registered! You can now log in.");
 			splashMenu();
 		} catch (Exception e) {
-			System.out.println("\nA user with that username already exists. Please try again.");
+			System.out.println(e);
 			log.error("Registration exception was thrown: " + e.fillInStackTrace());
 			register();
 		}

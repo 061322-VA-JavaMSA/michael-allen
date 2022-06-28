@@ -8,14 +8,15 @@ public class RegisterService {
 	
 	private UserDAO ud = new UserPostgres();
 	
-	public void createUser(User u) throws Exception {
+	public User createUser(User u) throws Exception {
 		User existingUser = ud.retrieveUserByUsername(u.getUsername());
 		
 		if(existingUser != null) {
-			throw new Exception();
+			throw new Exception("\nA user with that username already exists. Please try again.");
 		}
 		else {
 			ud.createUser(u);
+			return u;
 		}
 		
 	}

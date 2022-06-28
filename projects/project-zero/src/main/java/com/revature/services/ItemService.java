@@ -26,16 +26,16 @@ public class ItemService {
 		return idao.retrieveItemName(id);
 	}
 	
-	public void createItem(Item i) throws Exception {
-		idao.createItem(i);
+	public Item createItem(Item i) throws Exception {
+		return idao.createItem(i);
 	}
 	
 	public List<Integer> getIds() {
 		return idao.retrieveItemIds();
 	}
 	
-	public void updateOwnedStatus(int id) {
-		idao.updateOwnedStatus(id);
+	public boolean updateOwnedStatus(int id) {
+		return idao.updateOwnedStatus(id);
 	}
 	
 	public boolean deleteItemById(int id) {

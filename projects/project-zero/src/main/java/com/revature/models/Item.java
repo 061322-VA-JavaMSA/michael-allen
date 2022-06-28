@@ -12,6 +12,19 @@ public class Item {
 	public Item() {
 		super();
 	}
+	
+	public Item(int id, String name, double price, String ownedStatus) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.ownedStatus = ownedStatus;
+	}
+	
+	public Item(String name, double price, String ownedStatus) {
+		this.name = name;
+		this.price = price;
+		this.ownedStatus = ownedStatus;
+	}
 
 	public int getId() {
 		return id;

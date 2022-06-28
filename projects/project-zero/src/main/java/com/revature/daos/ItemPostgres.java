@@ -72,6 +72,7 @@ public class ItemPostgres implements ItemDAO {
 				i.setId(rs.getInt("id"));
 				i.setName(rs.getString("name"));
 				i.setPrice(rs.getDouble("price"));
+				i.setOwnedStatus(rs.getString("owned_status"));
 				
 				items.add(i);
 			}
@@ -98,6 +99,7 @@ public class ItemPostgres implements ItemDAO {
 				i.setId(rs.getInt("id"));
 				i.setName(rs.getString("name"));
 				i.setPrice(rs.getDouble("price"));
+				i.setOwnedStatus(rs.getString("owned_status"));
 				
 				items.add(i);
 			}
@@ -156,7 +158,7 @@ public class ItemPostgres implements ItemDAO {
 	}
 	
 	@Override
-	public void updateOwnedStatus(int id) {
+	public boolean updateOwnedStatus(int id) {
 		String sql = "UPDATE items SET owned_status = 'Owned' WHERE id = ?";
 		
 		try(Connection c = ConnectionUtil.getConnection()){
@@ -168,6 +170,31 @@ public class ItemPostgres implements ItemDAO {
 		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		String sql2 = "SELECT owned_status FROM items WHERE id = ?";
+		String status = "";
+		
+		try(Connection c = ConnectionUtil.getConnection()){
+			
+			PreparedStatement ps = c.prepareStatement(sql2);
+			ps.setInt(1, id);	
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				status = rs.getString("owned_status");
+			}
+
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(status.equals("Owned")) {
+			return true;
+		}
+		else {
+			return false;
 		}
 		
 	}

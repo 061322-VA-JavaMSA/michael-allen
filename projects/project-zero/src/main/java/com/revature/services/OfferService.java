@@ -12,7 +12,7 @@ public class OfferService {
 	
 	public Offer makeOffer(Offer o) throws Exception {
 		odao.createOffer(o);
-		return null;
+		return o;
 	}
 	
 	public boolean offerExists(int id, String user) {
