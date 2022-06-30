@@ -20,3 +20,5 @@
 14:13:35 [main] ERROR com.revature.ui.MainMenu - Exception was thrown: java.lang.NullPointerException
 17:15:10 [main] ERROR com.revature.ui.LoginRegMenu - Exception was thrown: java.lang.Exception
 08:00:40 [main] ERROR com.revature.ui.LoginRegMenu - Exception was thrown: java.lang.Exception: Invalid credentials. Please try again.
+09:34:11 [main] ERROR com.revature.ui.LoginRegMenu - Registration exception was thrown: java.lang.Exception: 
+A user with that username already exists. Please try again.
