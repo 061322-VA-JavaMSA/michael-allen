@@ -2,38 +2,52 @@ package com.revature.models;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class User {
 
-	private int user_id;
-	private String username;
-	private String password;
-	private String user_fname;
-	private String user_lname;
-	private String user_email;
-	private int user_role_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
+	@Column(nullable = false, unique = true)
+	private String username;
+	
+	@Column(nullable = false)
+	private String password;
+	
+	@Column(name = "first_name", nullable = false)
+	private String firstName;
+	
+	@Column(name = "last_name", nullable = false)
+	private String lastName;
+	
+	@Column(name = "email", nullable = false)
+	private String userEmail;
+	
+	@ManyToOne
+	@JoinColumn(name="role_id", nullable=false)
+	private Role role;
+
 	public User() {
 		super();
 	}
-	
-	public User(int user_id, String username, String password, String user_fname, String user_lname, String user_email,
-			int user_role_id) {
-		super();
-		this.user_id = user_id;
-		this.username = username;
-		this.password = password;
-		this.user_fname = user_fname;
-		this.user_lname = user_lname;
-		this.user_email = user_email;
-		this.user_role_id = user_role_id;
+
+	public int getId() {
+		return id;
 	}
 
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -52,41 +66,41 @@ public class User {
 		this.password = password;
 	}
 
-	public String getUser_fname() {
-		return user_fname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setUser_fname(String user_fname) {
-		this.user_fname = user_fname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getUser_lname() {
-		return user_lname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setUser_lname(String user_lname) {
-		this.user_lname = user_lname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getUser_email() {
-		return user_email;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUser_email(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
-	public int getUser_role_id() {
-		return user_role_id;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setUser_role_id(int user_role_id) {
-		this.user_role_id = user_role_id;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(password, user_email, user_fname, user_id, user_lname, user_role_id, username);
+		return Objects.hash(firstName, id, lastName, password, role, userEmail, username);
 	}
 
 	@Override
@@ -98,17 +112,16 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(password, other.password) && Objects.equals(user_email, other.user_email)
-				&& Objects.equals(user_fname, other.user_fname) && user_id == other.user_id
-				&& Objects.equals(user_lname, other.user_lname) && user_role_id == other.user_role_id
-				&& Objects.equals(username, other.username);
+		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(password, other.password) && Objects.equals(role, other.role)
+				&& Objects.equals(userEmail, other.userEmail) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", user_fname="
-				+ user_fname + ", user_lname=" + user_lname + ", user_email=" + user_email + ", user_role_id="
-				+ user_role_id + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", user_email=" + userEmail + ", role=" + role + "]";
 	}
-	
+
+
 }

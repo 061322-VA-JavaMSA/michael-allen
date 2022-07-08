@@ -3,18 +3,27 @@
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
-<!-- Root tag for hibernate config file -->
 <hibernate-configuration>
 
-    <!-- configuration for session factory -->
-    <session-factory>	
+	<!-- a SessionFactory instance listed as /jndi/name -->
+	<session-factory>
+
+		<property name="hibernate.connection.url">jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">programmer</property>
+		
 		<property name="hibernate.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.show_sql">true</property>
-		
-  <!--  <property name="hibernae.default_schema"></property>-->
+
+		<property name="hibernate.default_schema">project1</property>
 		<property name="hibernate.hbm2ddl.auto">validate</property>
 		
-    </session-factory>
+		<mapping class="com.revature.models.ReimbStatus"/>
+		<mapping class="com.revature.models.ReimbType"/>
+		<mapping class="com.revature.models.Reimbursement"/>
+		<mapping class="com.revature.models.Role"/>
+		<mapping class="com.revature.models.User"/>
+	</session-factory>
 
 </hibernate-configuration>

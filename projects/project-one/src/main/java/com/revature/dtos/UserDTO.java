@@ -2,57 +2,85 @@ package com.revature.dtos;
 
 import java.util.Objects;
 
+import com.revature.models.Role;
+import com.revature.models.User;
+
 public class UserDTO {
-	
-	private int user_id;
+
+	private int id;
 	private String username;
-	private String user_fname;
-	private String user_lname;
-	private String user_email;
-	private int user_role_id;
+	private String firstName;
+	private String lastName;
+	private String userEmail;
+	private Role role;
+
 	public UserDTO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public int getUser_id() {
-		return user_id;
+
+	public UserDTO(User u) {
+		id = u.getId();
+		username = u.getUsername();
+		firstName = u.getFirstName();
+		lastName = u.getLastName();
+		userEmail = u.getUserEmail();
+		role = u.getRole();
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+
+	public int getId() {
+		return id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getUser_fname() {
-		return user_fname;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setUser_fname(String user_fname) {
-		this.user_fname = user_fname;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getUser_lname() {
-		return user_lname;
+
+	public String getLastName() {
+		return lastName;
 	}
-	public void setUser_lname(String user_lname) {
-		this.user_lname = user_lname;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+
 	public String getUser_email() {
-		return user_email;
+		return userEmail;
 	}
+
 	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+		this.userEmail = user_email;
 	}
-	public int getUser_role_id() {
-		return user_role_id;
+
+	public Role getRole() {
+		return role;
 	}
-	public void setUser_role_id(int user_role_id) {
-		this.user_role_id = user_role_id;
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(user_email, user_fname, user_id, user_lname, user_role_id, username);
+		return Objects.hash(firstName, id, lastName, role, userEmail, username);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,14 +90,15 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return Objects.equals(user_email, other.user_email) && Objects.equals(user_fname, other.user_fname)
-				&& user_id == other.user_id && Objects.equals(user_lname, other.user_lname)
-				&& user_role_id == other.user_role_id && Objects.equals(username, other.username);
+		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(role, other.role) && Objects.equals(userEmail, other.userEmail)
+				&& Objects.equals(username, other.username);
 	}
+
 	@Override
 	public String toString() {
-		return "UserDTO [user_id=" + user_id + ", username=" + username + ", user_fname=" + user_fname + ", user_lname="
-				+ user_lname + ", user_email=" + user_email + ", user_role_id=" + user_role_id + "]";
+		return "UserDTO [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", user_email=" + userEmail + ", role=" + role + "]";
 	}
 
 }
