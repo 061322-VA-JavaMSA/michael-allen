@@ -14,6 +14,7 @@ import com.revature.exceptions.LoginException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.User;
 import com.revature.services.AuthService;
+import com.revature.util.CorsFix;
 
 public class AuthServlet extends HttpServlet {
 	
@@ -22,6 +23,7 @@ public class AuthServlet extends HttpServlet {
 	private ObjectMapper om = new ObjectMapper();
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		CorsFix.addCorsHeader(req.getRequestURI(), res);
 		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
