@@ -2,7 +2,6 @@ package com.revature.dtos;
 
 import java.util.Objects;
 
-import com.revature.models.Role;
 import com.revature.models.User;
 
 public class UserDTO {
@@ -11,8 +10,8 @@ public class UserDTO {
 	private String username;
 	private String firstName;
 	private String lastName;
-	private String userEmail;
-	private Role role;
+	private String email;
+	private String role;
 
 	public UserDTO() {
 		super();
@@ -24,7 +23,7 @@ public class UserDTO {
 		username = u.getUsername();
 		firstName = u.getFirstName();
 		lastName = u.getLastName();
-		userEmail = u.getUserEmail();
+		email = u.getEmail();
 		role = u.getRole();
 	}
 
@@ -60,25 +59,25 @@ public class UserDTO {
 		this.lastName = lastName;
 	}
 
-	public String getUser_email() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser_email(String user_email) {
-		this.userEmail = user_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, role, userEmail, username);
+		return Objects.hash(email, firstName, id, lastName, role, username);
 	}
 
 	@Override
@@ -90,15 +89,15 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(role, other.role) && Objects.equals(userEmail, other.userEmail)
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(role, other.role)
 				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "UserDTO [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", user_email=" + userEmail + ", role=" + role + "]";
+				+ ", email=" + email + ", role=" + role + "]";
 	}
 
 }

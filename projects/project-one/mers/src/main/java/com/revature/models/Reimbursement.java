@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -21,36 +22,15 @@ public class Reimbursement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(nullable = false)
-	private double amount;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Timestamp submitted;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Timestamp resolved;
-	
-	@Column(nullable = false)
+
+	private String author;
+	private String type;
 	private String description;
-	
-	@ManyToOne
-	@JoinColumn(name="author_id", nullable=false, insertable=false, updatable=false)
-	private User author;
-	
-	@ManyToOne
-	@JoinColumn(name="resolver_id", insertable=false, updatable=true)
-	private User resolver;
-	
-	@ManyToOne
-	@JoinColumn(name="status_id")
-	private ReimbStatus reimbStatus;
-	
-	@ManyToOne
-	@JoinColumn(name="type_id")
-	private ReimbType reimbType;
+	private double amount;
+	private String status;
+	private String submitted;
+	private String resolver;
+	private String resolved;
 
 	public Reimbursement() {
 		super();
@@ -65,28 +45,20 @@ public class Reimbursement {
 		this.id = id;
 	}
 
-	public double getAmount() {
-		return amount;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public Timestamp getSubmitted() {
-		return submitted;
+	public String getType() {
+		return type;
 	}
 
-	public void setSubmitted(Timestamp submitted) {
-		this.submitted = submitted;
-	}
-
-	public Timestamp getResolved() {
-		return resolved;
-	}
-
-	public void setResolved(Timestamp resolved) {
-		this.resolved = resolved;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getDescription() {
@@ -97,41 +69,49 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public User getAuthor() {
-		return author;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
-	public User getResolver() {
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getSubmitted() {
+		return submitted;
+	}
+
+	public void setSubmitted(String submitted) {
+		this.submitted = submitted;
+	}
+
+	public String getResolver() {
 		return resolver;
 	}
 
-	public void setResolver(User resolver) {
+	public void setResolver(String resolver) {
 		this.resolver = resolver;
 	}
 
-	public ReimbStatus getReimbStatus() {
-		return reimbStatus;
+	public String getResolved() {
+		return resolved;
 	}
 
-	public void setReimbStatus(ReimbStatus reimbStatus) {
-		this.reimbStatus = reimbStatus;
-	}
-
-	public ReimbType getReimbType() {
-		return reimbType;
-	}
-
-	public void setReimbType(ReimbType reimbType) {
-		this.reimbType = reimbType;
+	public void setResolved(String resolved) {
+		this.resolved = resolved;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, author, description, id, reimbStatus, reimbType, resolved, resolver, submitted);
+		return Objects.hash(amount, author, description, id, resolved, resolver, status, submitted, type);
 	}
 
 	@Override
@@ -145,18 +125,15 @@ public class Reimbursement {
 		Reimbursement other = (Reimbursement) obj;
 		return Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
 				&& Objects.equals(author, other.author) && Objects.equals(description, other.description)
-				&& id == other.id && Objects.equals(reimbStatus, other.reimbStatus)
-				&& Objects.equals(reimbType, other.reimbType) && Objects.equals(resolved, other.resolved)
-				&& Objects.equals(resolver, other.resolver) && Objects.equals(submitted, other.submitted);
+				&& id == other.id && Objects.equals(resolved, other.resolved)
+				&& Objects.equals(resolver, other.resolver) && Objects.equals(status, other.status)
+				&& Objects.equals(submitted, other.submitted) && Objects.equals(type, other.type);
 	}
 
 	@Override
 	public String toString() {
-		return "Reimbursement [id=" + id + ", amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
-				+ ", description=" + description + ", author=" + author + ", resolver=" + resolver + ", reimbStatus="
-				+ reimbStatus + ", reimbType=" + reimbType + "]";
+		return "Reimbursement [id=" + id + ", author=" + author + ", type=" + type + ", description=" + description
+				+ ", amount=" + amount + ", status=" + status + ", submitted=" + submitted + ", resolver=" + resolver
+				+ ", resolved=" + resolved + "]";
 	}
-	
-	
-
 }

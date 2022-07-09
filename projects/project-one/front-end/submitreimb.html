@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/mers_style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="submitForm">
+        <message class="error" id="noDescripError"></message>
+        <message class="error" id="noAmountError"></message>
+        Reimbursement type: <select name="reimbType" id="reimbType">
+            <option value="lodging">LODGING</option>
+            <option value="travel">TRAVEL</option>
+            <option value="food">FOOD</option>
+            <option value="other">OTHER</option>
+        </select><br><br>
+        Reimbursement description: <textarea id="reimbDescrip"></textarea><br><br>
+        Reimbursement amount: $ <input type="number" id="reimbAmount" maxlength="250" required><br><br>
+        <input type="button" id="submitBtn" value="Submit Request"><br>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/submitreimb.js"></script>
+</body>
+</html>

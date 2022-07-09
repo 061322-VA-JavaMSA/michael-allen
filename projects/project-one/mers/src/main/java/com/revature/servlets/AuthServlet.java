@@ -22,6 +22,7 @@ public class AuthServlet extends HttpServlet {
 	private AuthService as = new AuthService();
 	private ObjectMapper om = new ObjectMapper();
 	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), res);
 		

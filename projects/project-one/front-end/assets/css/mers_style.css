@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(229, 255, 189);
+}
+
+#submitForm {
+    /* format */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 50%;
+
+    /* display */
+    background-color: rgb(199, 255, 110);
+    border-radius: 10px;
+}
+
+#reimbDescrip {
+    vertical-align: middle;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100px;
+    width: 50%;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}

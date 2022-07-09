@@ -25,21 +25,19 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "first_name")
 	private String firstName;
 	
-	@Column(name = "last_name", nullable = false)
+	@Column(name = "last_name")
 	private String lastName;
+
+	private String email;
 	
-	@Column(name = "email", nullable = false)
-	private String userEmail;
-	
-	@ManyToOne
-	@JoinColumn(name="role_id", nullable=false)
-	private Role role;
+	private String role;
 
 	public User() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -82,25 +80,25 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser_email(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, password, role, userEmail, username);
+		return Objects.hash(email, firstName, id, lastName, password, role, username);
 	}
 
 	@Override
@@ -112,16 +110,15 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(password, other.password) && Objects.equals(role, other.role)
-				&& Objects.equals(userEmail, other.userEmail) && Objects.equals(username, other.username);
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
+				&& Objects.equals(role, other.role) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", user_email=" + userEmail + ", role=" + role + "]";
+				+ ", lastName=" + lastName + ", email=" + email + ", role=" + role + "]";
 	}
-
 
 }

@@ -1,5 +1,3 @@
-console.log("Hello from auth.js!");
-
 let loginBtn = document.getElementById('loginBtn');
 loginBtn.addEventListener('click', login);
 
@@ -23,7 +21,7 @@ async function login() {
 
     if(response.status == 200) {
         let data = await response.json();
-        let userRole = data.role["role"];
+        let userRole = data.role;
 
         if(userRole == "Employee") {
             //Store user data inside the session
@@ -36,8 +34,6 @@ async function login() {
             sessionStorage.setItem('principal', JSON.stringify(data));
             window.location.href = "../../managerhome.html";
         }
-
-    
     } else {
         console.log("Unable to log in.");
     }
