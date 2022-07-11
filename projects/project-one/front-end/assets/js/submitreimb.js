@@ -1,10 +1,8 @@
 let submitForm = document.getElementById("submitForm");
 let errorMsg1 = document.getElementById("noDescripError");
 let errorMsg2 = document.getElementById("noAmountError");
-let submitBtn = document.getElementById('submitBtn');
+let submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener('click', submitReimb);
-
-let apiUrl = 'http://localhost:8080/project-one';
 
 async function submitReimb() {
 

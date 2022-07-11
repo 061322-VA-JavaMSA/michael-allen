@@ -2,6 +2,8 @@ package com.revature.servlets;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.exceptions.ReimbsNotFoundException;
 import com.revature.exceptions.ReimbursementNotCreatedException;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbService;
@@ -21,6 +24,66 @@ public class ReimbServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		CorsFix.addCorsHeader(req.getRequestURI(), res);
+		res.addHeader("Content-Type", "application/json");
+		
+		String query = req.getQueryString();
+		String[] arrOfStr = query.split("&");
+		
+		if(arrOfStr.length == 1) {
+			String queryParam = arrOfStr[0];
+			String[] arrOfQuery = queryParam.split("=");
+			String property = arrOfQuery[0];
+			
+			if(property.equals("status")) {
+				
+				String status = arrOfQuery[1];
+				
+				try(PrintWriter pw = res.getWriter()) {
+					List<Reimbursement> reimbs = rs.getPendingReimbs(status);
+					pw.write(om.writeValueAsString(reimbs));
+					res.setStatus(200);
+				} catch(ReimbsNotFoundException e) {
+					res.setStatus(404);
+					e.printStackTrace();
+				}
+			}
+//			if(property.equals("user")) {
+//				
+//				String user = arrOfQuery[1];
+//				
+//				try(PrintWriter pw = res.getWriter()) {
+//					List<Reimbursement> reimbs = rs.getEmployeeReimbs(user);
+//					pw.write(om.writeValueAsString(reimbs));
+//					res.setStatus(200);
+//				} catch(ReimbsNotFoundException e) {
+//					res.setStatus(404);
+//					e.printStackTrace();
+//				}
+//			}
+		}
+		else {
+		
+			String userQuery = arrOfStr[0];
+			String[] arrOfUser = userQuery.split("=");
+			
+			String statusQuery = arrOfStr[1];
+			String[] arrOfStatus = statusQuery.split("=");
+	
+			String user = arrOfUser[1];
+			String status = arrOfStatus[1];
+		
+			if(!user.isEmpty() && !status.isEmpty()) {
+				try(PrintWriter pw = res.getWriter()) {
+					List<Reimbursement> reimbs = rs.getPendingReimbs(user, status);
+					pw.write(om.writeValueAsString(reimbs));
+					res.setStatus(200);
+				} catch(ReimbsNotFoundException e) {
+					res.setStatus(404);
+					e.printStackTrace();
+				}
+			}
+		}
 		
 	}
 	

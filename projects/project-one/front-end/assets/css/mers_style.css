@@ -1,11 +1,35 @@
 body {
     background-color: rgb(229, 255, 189);
+    margin: 0;
+}
+
+#navBar {
+    background-color: rgb(199, 255, 110);
+    padding: 20px;
+}
+
+#navItems {
+    /* format */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+
+    /* display */
+    list-style-type: none;
+}
+
+#navItems li {
+    display: inline;
+}
+
+#homepage {
+    margin-left: 20px;
 }
 
 #submitForm {
     /* format */
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     padding: 10px;
     width: 50%;
 
@@ -25,4 +49,14 @@ body {
 .error {
     color: red;
     text-align: center;
+}
+
+#pageBody {
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
+}
+
+.table {
+    margin-top: 30px;
 }
