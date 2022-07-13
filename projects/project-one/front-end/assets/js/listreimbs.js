@@ -35,6 +35,8 @@ async function listReimbs(role, status) {
 
             if(status=="Pending")
                 createDecisionTable(data);
+            if(status=="Approved" || status=="Denied")
+                createManagerResolvedTable(data);
         }
     
     }
@@ -128,6 +130,43 @@ async function listReimbs(role, status) {
             tdManager.innerHTML = reimb.resolver;
             tdResolveDate.innerHTML = reimb.resolved;
 
+            tr.append(tdType);
+            tr.append(tdDescrip);
+            tr.append(tdAmount);
+            tr.append(tdSubmitted);
+            tr.append(tdManager);
+            tr.append(tdResolveDate);
+
+            tableBody.append(tr);
+        });
+    }
+
+    function createManagerResolvedTable(data) {
+
+        let tableBody = document.getElementById("reimbs-tbody");
+
+        data.forEach(reimb => {
+            let tr = document.createElement('tr');
+            let tdEmployee = document.createElement('td');
+            let tdType = document.createElement('td');
+            let tdDescrip = document.createElement('td');
+            let tdAmount = document.createElement('td');
+            let tdSubmitted = document.createElement('td');
+            let tdManager = document.createElement('td');
+            let tdResolveDate = document.createElement('td');
+
+            let lcReimbType = reimb.type;
+            let ucReimbType = lcReimbType.charAt(0).toUpperCase() + lcReimbType.slice(1);
+
+            tdEmployee.innerHTML = reimb.author;
+            tdType.innerHTML = ucReimbType;
+            tdDescrip.innerHTML = reimb.description;
+            tdAmount.innerHTML = "$" + reimb.amount;
+            tdSubmitted.innerHTML = reimb.submitted;
+            tdManager.innerHTML = reimb.resolver;
+            tdResolveDate.innerHTML = reimb.resolved;
+
+            tr.append(tdEmployee);
             tr.append(tdType);
             tr.append(tdDescrip);
             tr.append(tdAmount);
