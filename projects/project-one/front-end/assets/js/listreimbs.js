@@ -5,39 +5,38 @@ async function listReimbs(role, status) {
     let username = null;
     let response;
 
-    if (role=="employee") {
+    if(role=="employee") {
         username = principal.username;
 
         response = await fetch(`${apiUrl}/reimbursements?author=${username}&status=${status}`, {
             credentials: 'include'
         });
-    }
-    else {
-        if(status=="Pending") {
-            response = await fetch(`${apiUrl}/reimbursements?status=${status}`, {
-                credentials: 'include'
-            });
-        }
-    }
 
-    if(response.status == 200) {
-        let data = await response.json();
+        if(response.status == 200) {
+            let data = await response.json();
 
-        if(data[0].resolved == null) {
-            if(role=="manager") {
-                createDecisionTable(data);
-            }
-            else {
+            if(status=="Pending")
                 createPendingTable(data);
-            }
+            if(status=="Approved" || status=="Denied")
+                createResolvedTable(data);
         }
-        else if (data[0].resolved != "" && data[0].resolved != null) {
-            createResolvedTable(data);
+        else {
+            console.log("Unable to retrieve reimbursements.");
         }
-        
     }
-    else {
-        console.log("Unable to retreive reimbursements.");
+    else if(role=="manager") {
+
+        response = await fetch(`${apiUrl}/reimbursements?status=${status}`, {
+            credentials: 'include'
+        });
+
+        if(response.status == 200) {
+            let data = await response.json();
+
+            if(status=="Pending")
+                createDecisionTable(data);
+        }
+    
     }
 
     function createPendingTable(data) {
@@ -89,11 +88,11 @@ async function listReimbs(role, status) {
             tdDescrip.innerHTML = reimb.description;
             tdAmount.innerHTML = "$" + reimb.amount;
             tdSubmitted.innerHTML = reimb.submitted;
-            tdDecision.innerHTML = "<select name='managerDecision' id='managerDecision'>"
-                                    + "<option value='approve'>APPROVE</option>"
-                                    + "<option value='deny'>DENY</option>"
+            tdDecision.innerHTML = "<select id='select" + reimb.id + "'>"
+                                + "<option value='Approved'>Approve</option>"
+                                + "<option value='Denied'>Deny</option>"
                                 + "</select>"
-                                + " | <input type='button' value='Submit'>";
+                                + " | <button id='updateBtn' onclick='updateReimb(" + reimb.id + ")'>Submit</button>";
 
             tr.append(tdAuthor);
             tr.append(tdType);

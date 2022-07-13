@@ -7,9 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
+import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.models.Reimbursement;
 import com.revature.util.HibernateUtil;
 
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -72,6 +74,22 @@ public class ReimbHibernate implements ReimbDAO {
 		}
 		
 		return reimbs;
+	}
+
+	@Override
+	public int updateReimbStatus(int id, String status, String resolver, String resolved) {
+		try(Session s = HibernateUtil.getSessionFactory().openSession()) {
+			Transaction tx = s.beginTransaction();
+			Query q = s.createQuery("update Reimbursement set status=:status, resolver=:resolver, resolved=:resolved where id=:id");
+			q.setParameter("status", status);
+			q.setParameter("resolver", resolver);
+			q.setParameter("resolved", resolved);
+			q.setParameter("id", id);
+			
+			return q.executeUpdate();		
+		
+		}
+
 	}
 
 }

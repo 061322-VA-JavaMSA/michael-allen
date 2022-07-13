@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.exceptions.ReimbsNotFoundException;
 import com.revature.exceptions.ReimbursementNotCreatedException;
 import com.revature.models.Reimbursement;
@@ -88,6 +89,30 @@ public class ReimbServlet extends HttpServlet {
 	}
 	
 	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		CorsFix.addCorsHeader(req.getRequestURI(), res);
+		
+		InputStream reqBody = req.getInputStream();
+		
+		Reimbursement updatedReimb = om.readValue(reqBody, Reimbursement.class);
+		
+		int id = updatedReimb.getId();
+		String status = updatedReimb.getStatus();
+		String resolver = updatedReimb.getResolver();
+		String resolved = updatedReimb.getResolved();
+
+		try {
+			rs.updateReimbStatus(id, status, resolver, resolved);
+			
+			res.setStatus(200); //Reimbursement was updated
+		} catch (ReimbStatusNotUpdatedException e) {
+			res.setStatus(400);;
+			res.sendError(400, "Unable to create reimbursement.");
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), res);
 		
@@ -104,5 +129,12 @@ public class ReimbServlet extends HttpServlet {
 			res.sendError(400, "Unable to create reimbursement.");
 			e.printStackTrace();
 		}
+	}
+	
+	//For preflight issues
+	@Override
+	protected void doOptions(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		CorsFix.addCorsHeader(req.getRequestURI(), res);
+		super.doOptions(req, res);
 	}
 }

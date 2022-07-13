@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.revature.daos.ReimbDAO;
 import com.revature.daos.ReimbHibernate;
+import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.exceptions.ReimbsNotFoundException;
 import com.revature.exceptions.ReimbursementNotCreatedException;
 import com.revature.models.Reimbursement;
@@ -40,6 +41,14 @@ public class ReimbService {
 		}
 		
 		return reimbs;
+	}
+	
+	public void updateReimbStatus(int id, String status, String resolver, String resolved) throws ReimbStatusNotUpdatedException {
+		int statusUpdated = rd.updateReimbStatus(id, status, resolver, resolved);
+		
+		if(statusUpdated == 0) {
+			throw new ReimbStatusNotUpdatedException();
+		}
 	}
 
 }
