@@ -50,5 +50,16 @@ public class ReimbService {
 			throw new ReimbStatusNotUpdatedException();
 		}
 	}
+	
+	public List<Reimbursement> getEmployeeReimbs(String user) throws ReimbsNotFoundException {
+		List<Reimbursement> reimbs = rd.getReimbsByUser(user);
+		
+		if(reimbs == null) {
+			throw new ReimbsNotFoundException();
+		}
+		
+		return reimbs;
+		
+	}
 
 }

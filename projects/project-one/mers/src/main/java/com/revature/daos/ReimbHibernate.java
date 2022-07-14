@@ -9,6 +9,7 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.util.HibernateUtil;
 
 import jakarta.persistence.Query;
@@ -90,6 +91,19 @@ public class ReimbHibernate implements ReimbDAO {
 		
 		}
 
+	}
+
+	@Override
+	public List<Reimbursement> getReimbsByUser(String user) {
+		List<Reimbursement> reimbs = new ArrayList<>();
+		
+		try (Session s = HibernateUtil.getSessionFactory().openSession();) {
+			Query q = s.createQuery("from Reimbursement where author=:user");
+			q.setParameter("user", user);
+			
+			reimbs = q.getResultList();
+		}
+		return reimbs;
 	}
 
 }

@@ -10,5 +10,6 @@ public interface ReimbDAO {
 	Reimbursement insertReimbursement(Reimbursement reimb);
 	List<Reimbursement> getPendingReimbursements(String user, String status);
 	List<Reimbursement> getPendingReimbursements(String status);
+	List<Reimbursement> getReimbsByUser(String user);
 	int updateReimbStatus(int id, String status, String resolver, String resolved);
 }

@@ -1,5 +1,6 @@
 package com.revature.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -7,6 +8,7 @@ import org.hibernate.Session;
 import com.revature.models.User;
 import com.revature.util.HibernateUtil;
 
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -56,8 +58,15 @@ public class UserHibernate implements UserDAO {
 
 	@Override
 	public List<User> retrieveEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<>();
+		
+		try (Session s = HibernateUtil.getSessionFactory().openSession();) {
+			Query q = s.createQuery("from User where role=:role");
+			q.setParameter("role", "Employee");
+			
+			users = q.getResultList();
+		}
+		return users;
 	}
 
 }

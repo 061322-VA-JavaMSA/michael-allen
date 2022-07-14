@@ -34,44 +34,48 @@ public class ReimbServlet extends HttpServlet {
 		if(arrOfStr.length == 1) {
 			String queryParam = arrOfStr[0];
 			String[] arrOfQuery = queryParam.split("=");
-			String property = arrOfQuery[0];
+			String status = arrOfQuery[1];
 			
-			if(property.equals("status")) {
-				
-				String status = arrOfQuery[1];
-				
-				try(PrintWriter pw = res.getWriter()) {
-					List<Reimbursement> reimbs = rs.getPendingReimbs(status);
-					pw.write(om.writeValueAsString(reimbs));
-					res.setStatus(200);
-				} catch(ReimbsNotFoundException e) {
-					res.setStatus(404);
-					e.printStackTrace();
-				}
+			try(PrintWriter pw = res.getWriter()) {
+				List<Reimbursement> reimbs = rs.getPendingReimbs(status);
+				pw.write(om.writeValueAsString(reimbs));
+				res.setStatus(200);
+			} catch(ReimbsNotFoundException e) {
+				res.setStatus(404);
+				e.printStackTrace();
 			}
-//			if(property.equals("user")) {
-//				
-//				String user = arrOfQuery[1];
-//				
-//				try(PrintWriter pw = res.getWriter()) {
-//					List<Reimbursement> reimbs = rs.getEmployeeReimbs(user);
-//					pw.write(om.writeValueAsString(reimbs));
-//					res.setStatus(200);
-//				} catch(ReimbsNotFoundException e) {
-//					res.setStatus(404);
-//					e.printStackTrace();
-//				}
-//			}
+		}
+		else if(arrOfStr.length == 2) {
+			
+			String fNameQuery = arrOfStr[0];
+			String[] arrOfFName = fNameQuery.split("=");
+			
+			String lNameQuery = arrOfStr[1];
+			String[] arrOflName = lNameQuery.split("=");
+			
+			String user = arrOfFName[1] + " " + arrOflName[1];
+			
+			try(PrintWriter pw = res.getWriter()) {
+				List<Reimbursement> reimbs = rs.getEmployeeReimbs(user);
+				pw.write(om.writeValueAsString(reimbs));
+				res.setStatus(200);
+			} catch(ReimbsNotFoundException e) {
+				res.setStatus(404);
+				e.printStackTrace();
+			}
 		}
 		else {
 		
-			String userQuery = arrOfStr[0];
-			String[] arrOfUser = userQuery.split("=");
+			String fNameQuery = arrOfStr[0];
+			String[] arrOfFName = fNameQuery.split("=");
 			
-			String statusQuery = arrOfStr[1];
+			String lNameQuery = arrOfStr[1];
+			String[] arrOflName = lNameQuery.split("=");
+			
+			String statusQuery = arrOfStr[2];
 			String[] arrOfStatus = statusQuery.split("=");
 	
-			String user = arrOfUser[1];
+			String user = arrOfFName[1] + " " + arrOflName[1];
 			String status = arrOfStatus[1];
 		
 			if(!user.isEmpty() && !status.isEmpty()) {

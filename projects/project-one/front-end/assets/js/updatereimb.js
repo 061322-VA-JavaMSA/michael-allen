@@ -1,7 +1,7 @@
 async function updateReimb(id) {
 
     let status = document.getElementById(`select${id}`).value;
-    let resolver = principal.username;
+    let resolver = principal.firstName + " " + principal.lastName;
 
     let current = new Date();
     let dateResolved = current.toLocaleDateString();

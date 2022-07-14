@@ -1,14 +1,14 @@
 async function listReimbs(role, status) {
-    /* Because this function is called when the page loads, insert the navbar as well as load the results. */
-    insertNav();
-
-    let username = null;
+    let firstName = null;
+    let lastName = null;
     let response;
 
     if(role=="employee") {
-        username = principal.username;
+        
+        firstName = principal.firstName;
+        lastName = principal.lastName;
 
-        response = await fetch(`${apiUrl}/reimbursements?author=${username}&status=${status}`, {
+        response = await fetch(`${apiUrl}/reimbursements?firstname=${firstName}&lastname=${lastName}&status=${status}`, {
             credentials: 'include'
         });
 
@@ -16,9 +16,9 @@ async function listReimbs(role, status) {
             let data = await response.json();
 
             if(status=="Pending")
-                createPendingTable(data);
+                populatePendingTable(data);
             if(status=="Approved" || status=="Denied")
-                createResolvedTable(data);
+                populateResolvedTable(data);
         }
         else {
             console.log("Unable to retrieve reimbursements.");
@@ -34,14 +34,14 @@ async function listReimbs(role, status) {
             let data = await response.json();
 
             if(status=="Pending")
-                createDecisionTable(data);
+                populateDecisionTable(data);
             if(status=="Approved" || status=="Denied")
-                createManagerResolvedTable(data);
+                populateManagerResolvedTable(data);
         }
     
     }
 
-    function createPendingTable(data) {
+    function populatePendingTable(data) {
 
         let tableBody = document.getElementById("reimbs-tbody");
 
@@ -69,7 +69,7 @@ async function listReimbs(role, status) {
         });
     }
 
-    function createDecisionTable(data) {
+    function populateDecisionTable(data) {
 
         let tableBody = document.getElementById("reimbs-tbody");
 
@@ -107,7 +107,7 @@ async function listReimbs(role, status) {
         });
     }
 
-    function createResolvedTable(data) {
+    function populateResolvedTable(data) {
 
         let tableBody = document.getElementById("reimbs-tbody");
 
@@ -141,7 +141,7 @@ async function listReimbs(role, status) {
         });
     }
 
-    function createManagerResolvedTable(data) {
+    function populateManagerResolvedTable(data) {
 
         let tableBody = document.getElementById("reimbs-tbody");
 
@@ -177,4 +177,41 @@ async function listReimbs(role, status) {
             tableBody.append(tr);
         });
     }
+}
+
+function populateEmpReimbTable(data) {
+
+    let tableBody = document.getElementById("reimbs-tbody");
+
+    data.forEach(reimb => {
+        let tr = document.createElement('tr');
+        let tdType = document.createElement('td');
+        let tdDescrip = document.createElement('td');
+        let tdAmount = document.createElement('td');
+        let tdSubmitDate = document.createElement('td');
+        let tdStatus = document.createElement('td');
+        let tdManager = document.createElement('td');
+        let tdResolveDate = document.createElement('td');
+
+        let lcReimbType = reimb.type;
+        let ucReimbType = lcReimbType.charAt(0).toUpperCase() + lcReimbType.slice(1);
+
+        tdType.innerHTML = ucReimbType;
+        tdDescrip.innerHTML = reimb.description;
+        tdAmount.innerHTML = "$" + reimb.amount;
+        tdSubmitDate.innerHTML = reimb.submitted;
+        tdStatus.innerHTML = reimb.status;
+        reimb.resolver == "" || reimb.resolver == null ? tdManager.innerHTML = "N/A" : tdManager.innerHTML = reimb.resolver;
+        reimb.resolved == "" || reimb.resolver == null ? tdResolveDate.innerHTML = "N/A" : tdResolveDate.innerHTML = reimb.resolved;
+
+        tr.append(tdType);
+        tr.append(tdDescrip);
+        tr.append(tdAmount);
+        tr.append(tdSubmitDate);
+        tr.append(tdStatus);
+        tr.append(tdManager);
+        tr.append(tdResolveDate);
+
+        tableBody.append(tr);
+    });
 }

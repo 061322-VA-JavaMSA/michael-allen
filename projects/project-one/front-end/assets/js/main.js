@@ -12,10 +12,6 @@ if(principal) {
     welcome.innerHTML = `Welcome, ${principal.firstName}!`;
 }
 
-function insertNav() {
-    $("#navBar").load("navbar.html");
-}
-
 async function logout() {
 
     let response = await fetch(`${apiUrl}/auth`, {

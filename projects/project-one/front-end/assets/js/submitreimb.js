@@ -6,7 +6,7 @@ submitBtn.addEventListener('click', submitReimb);
 
 async function submitReimb() {
 
-    let username = principal.username;
+    let author = principal.firstName + " " + principal.lastName;
     let reimbType = document.getElementById("reimbType").value;
     let reimbDescrip = document.getElementById("reimbDescrip").value;
     let reimbAmount = document.getElementById("reimbAmount").value;
@@ -25,7 +25,7 @@ async function submitReimb() {
     else {
 
         const object = { description: `${reimbDescrip}`,
-            author: `${username}`,
+            author: `${author}`,
             amount: `${reimbAmount}`,
             type: `${reimbType}`,
             submitted: `${dateSubmitted}`,

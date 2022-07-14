@@ -16,10 +16,14 @@
 <body onload="listReimbs('manager', 'Pending')">
 
     <nav id="navBar">
+        <ul id="navItems">
+            <li> <a href="managerhome.html"><img src="/assets/imgs/logo.png" alt="" id="logo"></a> </li>
+            <li><input type="button" id="logoutBtn" value="Log Out" onclick="logout()"></li>
+        </ul>
     </nav>
 
     <div id="pageBody">
-        <h3>Pending reimbursement requests:</h3>
+        <h3>Pending reimbursement requests</h3>
 
         <table class="table table-striped">
             <thead>
