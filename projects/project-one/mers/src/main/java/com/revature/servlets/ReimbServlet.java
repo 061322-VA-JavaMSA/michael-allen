@@ -110,7 +110,7 @@ public class ReimbServlet extends HttpServlet {
 			
 			res.setStatus(200); //Reimbursement was updated
 		} catch (ReimbStatusNotUpdatedException e) {
-			res.setStatus(400);;
+			res.setStatus(400);
 			res.sendError(400, "Unable to create reimbursement.");
 			e.printStackTrace();
 		}

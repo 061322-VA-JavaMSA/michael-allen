@@ -13,21 +13,19 @@
     </script>
     <title>Document</title>
 </head>
-<body onload="insertNav()">
+<body>
 
     <nav id="navBar">
         <ul id="navItems">
-            <li> <a href="managerhome.html"><img src="/assets/imgs/logo.png" alt="" id="logo"></a> </li>
+            <li> <a href="employeehome.html"><img src="/assets/imgs/logo.png" alt="" id="logo"></a> </li>
             <li><input type="button" id="logoutBtn" value="Log Out" onclick="logout()"></li>
         </ul>
     </nav>
 
     <div id="submitForm">
-        <p>Reimbursement request submitted successfully!</p>
-        <p>Click <a href="employeehome.html">here</a> to return home or click <a href="submitreimb.html">here</a> to submit another reimbursement request.</p>
+        <p id="submitSuccess">Reimbursement request submitted successfully!<br>Click <a href="employeehome.html">here</a> to return home or click <a href="submitreimb.html">here</a> to submit another reimbursement request.</p>
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/submitreimb.js"></script>
 </body>
 </html>

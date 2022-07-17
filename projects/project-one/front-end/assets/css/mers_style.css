@@ -1,7 +1,8 @@
 body {
-    background-color: rgb(229, 255, 189);
+    background-color: rgb(225, 255, 180);
     margin: 0;
 }
+
 
 /* *********************** NAVIGATION BAR STYLING ************************ */
 
@@ -26,9 +27,36 @@ body {
     display: inline;
 }
 
+.navLinks {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    border: 2px solid rgb(199, 255, 110);
+    border-radius: 10px;
+}
+
+.navLinks:hover {
+    color: black;
+    border: 2px solid black;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 10px;
+}
+
 #logo {
     width: 75px;
 }
+
+#logoutBtn {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* *********************** HOMEPAGE STYLING ************************ */
 
 #homepage {
     width: 50%;
@@ -37,10 +65,22 @@ body {
     font-size: 20px;
 }
 
-/* *********************** HOMEPAGE STYLING ************************ */
-
 #welcome {
     font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#employeeMenu {
+    background-color: rgb(199, 255, 110);
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#employeeMenu a {
+    color: black;
     font-weight: bold;
 }
 
@@ -48,7 +88,7 @@ body {
 
 #pageTitle {
     text-align: center;
-    margin: 10px;
+    margin: 20px;
 }
 
 #submitForm {
@@ -60,6 +100,7 @@ body {
     /* display */
     background-color: rgb(199, 255, 110);
     border-radius: 10px;
+    font-size: 20px;
 }
 
 #reimbDescrip {
@@ -75,6 +116,10 @@ body {
     text-align: center;
 }
 
+#submitSuccess {
+    font-size: 20px;
+}
+
 /* *********************** END REQUEST SUBMISSION PAGE STYLING ************************ */
 
 #pageBody {
@@ -86,3 +131,49 @@ body {
 .table {
     margin-top: 30px;
 }
+
+/* *********************** USER INFO VIEW/EDIT PAGE STYLING ************************ */
+
+#userInfo {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
+    
+    background-color: rgb(199, 255, 110);
+    border-radius: 10px;
+    font-size: 20px;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px 0px;
+}
+
+.showInfo, .infoField {
+    height: 30px;
+    border: none;
+}
+
+.showInfo:hover {
+    cursor:default;
+}
+
+.showInfo:disabled {
+    background-color: rgb(199, 255, 110);
+    color: black; 
+}
+
+#editSubmitBtn {
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    background-image: linear-gradient(white, rgb(199, 255, 110));
+    border: none;
+    box-shadow: 3px 3px 10px black;
+    outline: none;
+}
+
+#updateSuccess {
+    margin: 0px 20px;
+}
+
+/* *********************** END USER INFO VIEW/EDIT PAGE STYLING ************************ */

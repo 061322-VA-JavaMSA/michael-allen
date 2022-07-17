@@ -2,14 +2,9 @@ let apiUrl = 'http://localhost:8080/project-one';
 
 let principalString = sessionStorage.getItem('principal');
 let principal = null;
-let welcome = document.getElementById("welcome");
 
 if(principalString) {
     principal = JSON.parse(principalString);
-}
-
-if(principal) {
-    welcome.innerHTML = `Welcome, ${principal.firstName}!`;
 }
 
 async function logout() {

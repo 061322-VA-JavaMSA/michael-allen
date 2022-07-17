@@ -13,39 +13,35 @@
     </script>
     <title>Document</title>
 </head>
-<body onload="listReimbs('employee', 'Approved')">
+<body>
 
     <nav id="navBar">
         <ul id="navItems">
             <li> <a href="employeehome.html"><img src="/assets/imgs/logo.png" alt="" id="logo"></a> </li>
             <li> <a href="submitreimb.html" class="navLinks">Submit New Reimbursement</a> </li>
             <li> <a href="emppendingreimb.html" class="navLinks">Pending Reimbursements</a> </li>
+            <li> <a href="empapprovedreimb.html" class="navLinks">Approved Reimbursements</a> </li>
             <li> <a href="empdeniedreimb.html" class="navLinks">Denied Reimbursements</a> </li>
-            <li> <a href="updateinfo.html" class="navLinks">User Info</a> </li>
             <li> <input type="button" id="logoutBtn" value="Log Out" onclick="logout()"> </li>
         </ul>
     </nav>
 
     <div id="pageBody">
-        <h3>My approved reimbursement requests:</h3>
+        <h3>Your information</h3>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Type</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Date Submitted</th>
-                    <th scope="col">Approving Manager</th>
-                    <th scope="col">Date Approved</th>
-                </tr>
-            </thead>
-            <tbody id="reimbs-tbody">
-            </tbody>
-        </table>
+        <div id="userInfo">
+            <div id="property">
+
+            </div>
+            <div id = "value">
+
+            </div>
+        </div>
+
+        <button id="editSubmitBtn" onclick="editInfo()">Edit information</button>
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/listreimbs.js"></script>
+    <script src="assets/js/viewinfo.js"></script>
 </body>
 </html>

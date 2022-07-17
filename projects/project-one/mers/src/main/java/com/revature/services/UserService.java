@@ -5,7 +5,9 @@ import java.util.List;
 import com.revature.daos.UserDAO;
 import com.revature.daos.UserHibernate;
 import com.revature.exceptions.CannotRetrieveEmployeesException;
+import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.exceptions.UserNotFoundException;
+import com.revature.exceptions.UserNotUpdatedException;
 import com.revature.models.User;
 
 public class UserService {
@@ -39,5 +41,13 @@ public class UserService {
 		}
 		
 		return users;
+	}
+	
+	public void updateUser(int id, String fname, String lname, String username, String email) throws UserNotUpdatedException {
+		int userUpdated = ud.updateUser(id, fname, lname, username, email);
+		
+		if(userUpdated == 0) {
+			throw new UserNotUpdatedException();
+		}
 	}
 }

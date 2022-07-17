@@ -26,13 +26,18 @@
         <p id="welcome"></p>
 
         <div id="employeeMenu">
-            <a href="resolvereimb.html">Approve/deny pending reimbursement requests</a><br>
-            <a href="manapprovedreimb.html">View approved reimbursement requests</a><br>
-            <a href="mandeniedreimb.html">View denied reimbursement requests</a><br>
+            <a href="resolvereimb.html">Approve/deny pending reimbursement requests</a><br><br>
+            <a href="manapprovedreimb.html">View approved reimbursement requests</a><br><br>
+            <a href="mandeniedreimb.html">View denied reimbursement requests</a><br><br>
             <a href="viewemp.html">View employees</a>
         </div>
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        if(principal) {
+            welcome.innerHTML = `Welcome, ${principal.firstName}!`;
+        }
+    </script>
 </body>
 </html>

@@ -7,9 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
-import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.models.Reimbursement;
-import com.revature.models.User;
 import com.revature.util.HibernateUtil;
 
 import jakarta.persistence.Query;
@@ -88,7 +86,6 @@ public class ReimbHibernate implements ReimbDAO {
 			q.setParameter("id", id);
 			
 			return q.executeUpdate();		
-		
 		}
 
 	}

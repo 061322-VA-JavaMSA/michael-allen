@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.User;
 import com.revature.util.HibernateUtil;
@@ -51,9 +52,18 @@ public class UserHibernate implements UserDAO {
 	}
 	
 	@Override
-	public boolean updateUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+	public int updateUser(int id, String fname, String lname, String username, String email) {
+		try(Session s = HibernateUtil.getSessionFactory().openSession()) {
+			Transaction tx = s.beginTransaction();
+			Query q = s.createQuery("update User set firstName=:fname, lastName=:lname, username=:username, email=:email where id=:id");
+			q.setParameter("fname", fname);
+			q.setParameter("lname", lname);
+			q.setParameter("username", username);
+			q.setParameter("email", email);
+			q.setParameter("id", id);
+			
+			return q.executeUpdate();		
+		}
 	}
 
 	@Override

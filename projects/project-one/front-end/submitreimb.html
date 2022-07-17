@@ -13,12 +13,16 @@
     </script>
     <title>Document</title>
 </head>
-<body onload="insertNav()">
+<body>
 
     <nav id="navBar">
         <ul id="navItems">
             <li> <a href="employeehome.html"><img src="/assets/imgs/logo.png" alt="" id="logo"></a> </li>
-            <li><input type="button" id="logoutBtn" value="Log Out" onclick="logout()"></li>
+            <li> <a href="emppendingreimb.html" class="navLinks">Pending Reimbursements</a> </li>
+            <li> <a href="empapprovedreimb.html" class="navLinks">Approved Reimbursements</a> </li>
+            <li> <a href="empdeniedreimb.html" class="navLinks">Denied Reimbursements</a> </li>
+            <li> <a href="updateinfo.html" class="navLinks">User Info</a> </li>
+            <li> <input type="button" id="logoutBtn" value="Log Out" onclick="logout()"> </li>
         </ul>
     </nav>
 
@@ -27,14 +31,14 @@
     <div id="submitForm">
         <message class="error" id="noDescripError"></message>
         <message class="error" id="noAmountError"></message>
-        Reimbursement type: <select name="reimbType" id="reimbType">
-            <option value="lodging">LODGING</option>
-            <option value="travel">TRAVEL</option>
-            <option value="food">FOOD</option>
-            <option value="other">OTHER</option>
+        <strong>Reimbursement type:</strong> <select name="reimbType" id="reimbType">
+            <option value="lodging">Lodging</option>
+            <option value="travel">Travel</option>
+            <option value="food">Food</option>
+            <option value="other">Other</option>
         </select><br><br>
-        Reimbursement description: <textarea id="reimbDescrip"></textarea><br><br>
-        Reimbursement amount: $ <input type="number" id="reimbAmount" maxlength="250" required><br><br>
+        <strong>Reimbursement description:</strong> <textarea id="reimbDescrip"></textarea><br><br>
+        <strong>Reimbursement amount: $</strong> <input type="number" id="reimbAmount" maxlength="250" required><br><br>
         <input type="button" id="submitBtn" value="Submit Request"><br>
     </div>
 

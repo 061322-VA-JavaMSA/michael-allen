@@ -10,7 +10,7 @@ public interface UserDAO {
 	
 	//Employee
 	User retrieveUserById(int id);
-	boolean updateUser(User u);
+	int updateUser(int id, String fname, String lname, String username, String email);
 	
 	//Manager
 	List<User> retrieveEmployees();
