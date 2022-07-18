@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exceptions.ReimbStatusNotUpdatedException;
 import com.revature.exceptions.ReimbsNotFoundException;
@@ -22,6 +25,7 @@ public class ReimbServlet extends HttpServlet {
 
 	private ReimbService rs = new ReimbService();
 	private ObjectMapper om = new ObjectMapper();
+	private static Logger log = LogManager.getLogger(ReimbServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -40,9 +44,10 @@ public class ReimbServlet extends HttpServlet {
 				List<Reimbursement> reimbs = rs.getPendingReimbs(status);
 				pw.write(om.writeValueAsString(reimbs));
 				res.setStatus(200);
+				log.info("Pending reimbursements were found successfully.");
 			} catch(ReimbsNotFoundException e) {
 				res.setStatus(404);
-				e.printStackTrace();
+				log.error("Pending reimbursements not found.");
 			}
 		}
 		else if(arrOfStr.length == 2) {
@@ -59,9 +64,10 @@ public class ReimbServlet extends HttpServlet {
 				List<Reimbursement> reimbs = rs.getEmployeeReimbs(user);
 				pw.write(om.writeValueAsString(reimbs));
 				res.setStatus(200);
+				log.info("Employee's reimbursements were found successfully.");
 			} catch(ReimbsNotFoundException e) {
 				res.setStatus(404);
-				e.printStackTrace();
+				log.error("Employee's reimbursements were not found.");
 			}
 		}
 		else {
@@ -83,9 +89,11 @@ public class ReimbServlet extends HttpServlet {
 					List<Reimbursement> reimbs = rs.getPendingReimbs(user, status);
 					pw.write(om.writeValueAsString(reimbs));
 					res.setStatus(200);
+					log.info("Pending reimbursements were found successfully.");
 				} catch(ReimbsNotFoundException e) {
 					res.setStatus(404);
-					e.printStackTrace();
+					log.error(e.fillInStackTrace());
+					log.error("Pending reimbursements not found.");
 				}
 			}
 		}
@@ -109,10 +117,11 @@ public class ReimbServlet extends HttpServlet {
 			rs.updateReimbStatus(id, status, resolver, resolved);
 			
 			res.setStatus(200); //Reimbursement was updated
+			log.info("Reimbursement status was updated successfully.");
 		} catch (ReimbStatusNotUpdatedException e) {
 			res.setStatus(400);
 			res.sendError(400, "Unable to create reimbursement.");
-			e.printStackTrace();
+			log.error("Unable to create reimbursement.");
 		}
 	}
 	
@@ -128,10 +137,11 @@ public class ReimbServlet extends HttpServlet {
 			rs.createReimbursement(newReimb);
 			
 			res.setStatus(201); //Reimbursement was created
+			log.info("Reimbursement was created successfully.");
 		} catch (ReimbursementNotCreatedException e) {
 			res.setStatus(400);;
 			res.sendError(400, "Unable to create reimbursement.");
-			e.printStackTrace();
+			log.error("Unable to create reimbursement.");
 		}
 	}
 	

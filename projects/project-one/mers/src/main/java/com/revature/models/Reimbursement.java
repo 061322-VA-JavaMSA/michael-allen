@@ -36,6 +36,17 @@ public class Reimbursement {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Reimbursement(String author, String type, String description, double amount, String status, String submitted, String resolver, String resolved) {
+		this.author = author;
+		this.type = type;
+		this.description = description;
+		this.amount = amount;
+		this.status = status;
+		this.submitted = submitted;
+		this.resolver = resolver;
+		this.resolved = resolved;
+	}
 
 	public int getId() {
 		return id;

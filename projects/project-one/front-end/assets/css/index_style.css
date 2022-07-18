@@ -39,3 +39,9 @@ label {
     padding: 10px 20px;
     box-shadow: 4px 4px 5px;
 }
+
+#errorMsg {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}

@@ -36,5 +36,6 @@ async function login() {
         }
     } else {
         console.log("Unable to log in.");
+        document.getElementById("errorMsg").innerHTML = "Invalid credentials."
     }
 }

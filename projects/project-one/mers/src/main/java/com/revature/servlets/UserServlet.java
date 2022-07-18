@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.UserDTO;
 import com.revature.exceptions.UserNotUpdatedException;
@@ -22,6 +25,7 @@ public class UserServlet extends HttpServlet {
 
 	UserService us = new UserService();
 	private ObjectMapper om = new ObjectMapper();
+	private static Logger log = LogManager.getLogger(UserServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -44,10 +48,11 @@ public class UserServlet extends HttpServlet {
 				PrintWriter pw = res.getWriter();
 				pw.write(om.writeValueAsString(usersDTO));
 				res.setStatus(200);
+				log.info("Employees retrieved successfully.");
 				pw.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e.fillInStackTrace());
 			}
 		} //End If
 		
@@ -70,11 +75,12 @@ public class UserServlet extends HttpServlet {
 		try {
 			us.updateUser(id, fname, lname, username, email);
 			
-			res.setStatus(200); //Reimbursement was updated
+			res.setStatus(200);
+			log.info("User information was updated successfully.");
 		} catch (UserNotUpdatedException e) {
 			res.setStatus(400);
-			res.sendError(400, "Unable to create reimbursement.");
-			e.printStackTrace();
+			res.sendError(400, "Unable to update user information.");
+			log.error("Unable to update user information.");
 		}
 	}
 	

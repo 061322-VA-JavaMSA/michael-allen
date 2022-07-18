@@ -1,0 +1,82 @@
+21:37:27 [http-nio-8080-exec-6] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:37:28 [http-nio-8080-exec-6] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:37:30 [http-nio-8080-exec-6] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:37:30 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:37:30 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:37:30 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:37:30 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:37:30 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:37:35 [http-nio-8080-exec-6] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:37:39 [http-nio-8080-exec-6] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7e0ef97] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:37:39 [http-nio-8080-exec-6] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:37:41 [http-nio-8080-exec-6] INFO  com.revature.servlets.AuthServlet - User successfully logged in.
+21:37:45 [http-nio-8080-exec-8] INFO  com.revature.servlets.ReimbServlet - Pending reimbursements were found successfully.
+21:37:51 [http-nio-8080-exec-3] INFO  com.revature.servlets.ReimbServlet - Pending reimbursements were found successfully.
+21:38:18 [http-nio-8080-exec-1] INFO  com.revature.servlets.ReimbServlet - Pending reimbursements were found successfully.
+21:38:47 [http-nio-8080-exec-4] INFO  com.revature.servlets.ReimbServlet - Reimbursement was created successfully.
+21:55:21 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:55:21 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:55:22 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:55:22 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:55:22 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:55:22 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:55:22 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:55:22 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:55:25 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:55:26 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1570cad0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:55:27 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:56:12 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:56:13 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:56:13 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:56:13 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:56:13 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:56:13 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:56:13 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:56:13 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:56:16 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:56:17 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1570cad0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:56:19 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:56:34 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:56:35 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:56:35 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:56:35 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:56:35 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:56:35 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:56:35 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:56:35 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:56:38 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:56:39 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1570cad0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:56:40 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:57:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:57:25 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:57:25 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:57:25 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:57:25 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:57:25 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:57:25 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:57:25 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:57:29 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:57:30 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5fb07347] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:57:31 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21:57:41 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+21:57:41 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+21:57:42 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+21:57:42 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:57:42 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+21:57:42 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+21:57:42 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+21:57:42 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+21:57:45 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+21:57:46 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5fb07347] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:57:47 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:06:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.1.Final
+22:06:07 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+22:06:07 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+22:06:07 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+22:06:07 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://database-1.cufk6elj3aut.us-west-1.rds.amazonaws.com:5432/postgres]
+22:06:07 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, dialect=org.hibernate.dialect.PostgreSQLDialect, user=postgres}
+22:06:07 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+22:06:07 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+22:06:10 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:06:12 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1570cad0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+22:06:13 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
